@@ -3,7 +3,7 @@
 # Set the pipefail
 set -o pipefail
 
-# Variables
+# Variable to the path of the workflow directory.
 GITHUB_ACTIONS_WORKFLOW_DIR="/home/ec2-user/actions-runner/_work/"
 
 function cleanup_github_actions_workflow_dir() {
