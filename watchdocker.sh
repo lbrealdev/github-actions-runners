@@ -1,24 +1,24 @@
 #!/bin/bash
 
-set -o pipefail
+set -eo pipefail
 
 # Get all containers by .ID
-function get_container_id() {
+function docker_get_container_id() {
   docker_container_ids=$(docker ps -a --format '{{.ID}}')
 }
 
-function remove_container() {
+function docker_remove_container_id() {
   local container_id=$1
   docker rm -f "$container_id"
 }
 
 function main() {
-  get_container_id
+  docker_get_container_id
   # Remove all containers.
   if [ -n "$docker_container_ids" ]; then
     for container_id in $docker_container_ids; do
       echo "$container_id"
-      # remove_container "$container_id"
+      docker_remove_container_id "$container_id"
     done
   else
     echo "No containers found!"
