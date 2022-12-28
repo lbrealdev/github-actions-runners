@@ -9,7 +9,7 @@ function docker_get_container_id() {
 
 function docker_remove_container_id() {
   local container_id=$1
-  docker rm -f "$container_id"
+  docker rm -f "$container_id" &>/dev/null
 }
 
 function main() {
@@ -17,8 +17,8 @@ function main() {
   # Remove all containers.
   if [ -n "$docker_container_ids" ]; then
     for container_id in $docker_container_ids; do
-      echo "$container_id"
       docker_remove_container_id "$container_id"
+      echo "All containers have been removed!"
     done
   else
     echo "No containers found!"
