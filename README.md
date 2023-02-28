@@ -12,5 +12,7 @@ Read more: [Github Docs](https://docs.github.com/en/actions/hosting-your-own-run
 
 Search for the `.env` file in the self-hosted executor application directory `$HOME/actions-runner`, 
 
-#### Upgrade self-hosted runner
+```shell
+ACTIONS_RUNNER_HOOK_JOB_COMPLETED=/path/to/script.sh
+```
 
